@@ -1,0 +1,60 @@
+
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Files Parser</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="#">CSB</a></li>
+        <li><a href="#">Library</a></li>
+        <li class="active">Data</li>
+    </ol>
+
+
+    <h3>Select files</h3>
+
+
+    <div ng2FileDrop
+         [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+         (fileOver)="fileOverBase($event)"
+         [uploader]="uploader"
+         class="well my-drop-zone">
+        Base drop zone
+    </div>
+
+    <input type="file" ng2FileSelect [uploader]="uploader" />
+    <button type="button"  (click)="uploadFile()" > Upload</button>
+
+    <br/>
+
+    <ul>
+        <li *ngFor="let item of uploader.queue">{{item.file.name}}</li>
+    </ul>
+
+<br/>
+
+    <div class="progress" style="">
+        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+    </div>
+
+
+
+
+    <button class="btn btn-info" (click)="getName()">Submit</button>
+
+</div><!-- /.container -->
